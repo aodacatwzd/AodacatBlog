@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <!--    _    ___  ____    _    ____    _  _____
+       / \  / _ \|  _ \  / \  / ___|  / \|_   _|
+      / _ \| | | | | | |/ _ \| |     / _ \ | |
+     / ___ \ |_| | |_| / ___ \ |___ / ___ \| |
+    /_/   \_\___/|____/_/   \_\____/_/   \_\_|
+                                            -->
     <script th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}" type="text/javascript"></script>
     <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{.css}">
@@ -9,11 +15,15 @@
 </head>
 <body>
 <ul>
-    <li><a class="active" href="#home">主页</a></li>
-    <li><a href="#news">文章</a></li>
-    <li><a href="#contact">联系</a></li>
-    <li><a href="#about">关于</a></li>
+    <li><a href="#home">Aodacat's Blog</a></li>
+    <li><a class="active" href="#home">Homepage</a></li>
+    <li><a href="#news">Articles</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#search">Search</a></li>
 </ul>
-<h1 th:text="${name}"></h1>
+<div style="background-color:silver;height: 4000px;">
+
+</div>
 </body>
 </html>
