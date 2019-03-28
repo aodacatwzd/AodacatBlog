@@ -22,8 +22,12 @@
     <li><a href="#about">About</a></li>
     <li><a href="#search">Search</a></li>
 </ul>
-<div style="background-color:silver;height: 4000px;">
-
+<div style="background-color:silver;height: 4000px;margin-top: 60px;">
+    <form role="form" action="#" th:action="@{/home}" th:object="${basicService}" method="post">
+        <input type="text"  th:field="*{name}" id="name">
+        <input type="text" th:field="*{context}" id="context">
+        <button type="submit" class="btn btn-primary" id="btn">Submit</button>
+    </form>
 </div>
 </body>
 </html>
