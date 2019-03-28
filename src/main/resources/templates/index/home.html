@@ -28,6 +28,11 @@
         <input type="text" th:field="*{context}" id="context">
         <button type="submit" class="btn btn-primary" id="btn">Submit</button>
     </form>
+    <form role="form" action="#" th:action="@{/home}" th:object="${basicService}" method="post">
+        <input type="text"  th:field="*{id}" id="id">
+        <button type="submit" class="btn btn-primary" id="btn2">Submit</button>
+    </form>
+
 </div>
 </body>
 </html>

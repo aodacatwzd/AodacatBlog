@@ -10,15 +10,22 @@ import javax.annotation.Resource;
 public class BasicService {
     @Autowired
     JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    private String id;
+    private String name;
+    private String context;
 
-    public String name;
-    public String context;
 
-
+    public void delete(int id){
+        jdbcTemplate.update("delete from article where id=?", id);
+    }
 
 
     public void create(String name, String context) {
         jdbcTemplate.update("insert into article(name,context) values(?, ?)", name, context);
+    }
+
+    public void setId(String id){
+        this.id=id;
     }
 
     public void setName(String name) {
@@ -35,6 +42,10 @@ public class BasicService {
 
     public String getContext(){
         return context;
+    }
+
+    public String getId(){
+        return id;
     }
 }
 

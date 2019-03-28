@@ -21,12 +21,14 @@ public class MainController {
     }
 
     @RequestMapping(value = "/home",method = RequestMethod.POST)
-    public String articlePage(@ModelAttribute BasicService basicService1){
-        BasicService newBasicService= new BasicService();
-        newBasicService.setName(basicService1.getName());
-        newBasicService.setContext(basicService1.getContext());
-        basicService.create(basicService1.getName(),basicService1.getContext());
+    public String InsertArticle(@ModelAttribute BasicService basicService1){
+        if(basicService1.getId()!=null) {
+            basicService.delete(Integer.parseInt(basicService1.getId()));
+            //System.out.println(basicService1.getId());
+        }
+        if(basicService1.getName()!=null && basicService1.getContext()!=null) {
+            basicService.create(basicService1.getName(), basicService1.getContext());
+        }
         return "index/home";
     }
-
 }
