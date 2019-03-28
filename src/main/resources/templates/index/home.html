@@ -33,6 +33,13 @@
         <button type="submit" class="btn btn-primary" id="btn2">Submit</button>
     </form>
 
+    <tr th:each="article : ${articleList}">
+        <td th:text="${article.getId()}">Title ...</td>
+        <td th:text="${article.getName()}">Title ...</td>
+        <td th:text="${article.getContext()}">1</td>
+        <br />
+    </tr>
+
 </div>
 </body>
 </html>

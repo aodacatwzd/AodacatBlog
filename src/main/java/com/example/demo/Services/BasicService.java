@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import java.sql.ResultSet;
+import java.util.List;
 
 @Service
 public class BasicService {
@@ -22,6 +23,16 @@ public class BasicService {
 
     public void create(String name, String context) {
         jdbcTemplate.update("insert into article(name,context) values(?, ?)", name, context);
+    }
+
+    public List<BasicService> getArticle(){
+        return jdbcTemplate.query("select * from article;", (ResultSet resultSet, int i) -> {
+            BasicService basicService= new BasicService();
+            basicService.setId(resultSet.getString(1));
+            basicService.setName(resultSet.getString(2));
+            basicService.setContext(resultSet.getString(3));
+            return basicService;
+        });
     }
 
     public void setId(String id){

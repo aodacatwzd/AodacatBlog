@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/")
 public class MainController {
@@ -17,6 +19,8 @@ public class MainController {
     @RequestMapping(value = "/home",method = RequestMethod.GET)
     public String homePage(Model model){
         model.addAttribute("basicService",new BasicService());
+        List<BasicService> articleList = basicService.getArticle();
+        model.addAttribute("articleList",articleList);
         return "index/home";
     }
 
