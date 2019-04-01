@@ -13,8 +13,13 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/")
 public class MainController {
-    @Autowired
+    private final
     BasicService basicService;
+
+    @Autowired
+    public MainController(BasicService basicService) {
+        this.basicService = basicService;
+    }
 
     @RequestMapping(value = "/home",method = RequestMethod.GET)
     public String homePage(Model model){
@@ -25,13 +30,14 @@ public class MainController {
     }
 
     @RequestMapping(value = "/home",method = RequestMethod.POST)
-    public String InsertArticle(@ModelAttribute BasicService basicService1){
+    public String InsertArticle(@ModelAttribute BasicService basicService1,Model model){
         if(basicService1.getId()!=null) {
             basicService.delete(Integer.parseInt(basicService1.getId()));
-            //System.out.println(basicService1.getId());
+            homePage(model);
         }
         if(basicService1.getName()!=null && basicService1.getContext()!=null) {
             basicService.create(basicService1.getName(), basicService1.getContext());
+            homePage(model);
         }
         return "index/home";
     }

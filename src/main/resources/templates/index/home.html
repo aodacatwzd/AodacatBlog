@@ -8,6 +8,7 @@
     /_/   \_\___/|____/_/   \_\____/_/   \_\_|
                                             -->
     <script th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{.js}" type="text/javascript"></script>
     <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{.css}">
     <meta charset="UTF-8"/>
@@ -24,22 +25,26 @@
 </ul>
 <div style="background-color:silver;height: 4000px;margin-top: 60px;">
     <form role="form" action="#" th:action="@{/home}" th:object="${basicService}" method="post">
-        <input type="text"  th:field="*{name}" id="name">
+        <input type="text" th:field="*{name}" id="name">
         <input type="text" th:field="*{context}" id="context">
         <button type="submit" class="btn btn-primary" id="btn">Submit</button>
     </form>
-    <form role="form" action="#" th:action="@{/home}" th:object="${basicService}" method="post">
-        <input type="text"  th:field="*{id}" id="id">
-        <button type="submit" class="btn btn-primary" id="btn2">Submit</button>
-    </form>
+    <div th:each="article : ${articleList}">
+        <div style="border: #2234cc 2px solid">
+            <p th:text="${article.getId()}"></p>
+            <h3 th:text="${article.getName()}">Title ...</h3>
+            <p th:text="${article.getContext()}">1</p>
 
-    <tr th:each="article : ${articleList}">
-        <td th:text="${article.getId()}">Title ...</td>
-        <td th:text="${article.getName()}">Title ...</td>
-        <td th:text="${article.getContext()}">1</td>
-        <br />
-    </tr>
-
+            <form role="form" action="#" th:action="@{/home}" th:object="${basicService}" method="post">
+                <input style="display: none" id="uuu" th:value="${article.getId()}" />
+                <input style="display: none" type="text" id="test" th:value="${article.getId()}" th:field="*{id}">
+                <script>
+                    document.getElementById("test").value=document.getElementById("uuu").value;
+                </script>
+                <button class="btn btn-primary" id="btn3">Delete</button>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
