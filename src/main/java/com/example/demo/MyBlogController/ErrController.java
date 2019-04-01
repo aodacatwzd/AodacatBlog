@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ErrController implements ErrorController {
     @Override
     public String getErrorPath() {
-        return "404";
+        return "/index/err";
     }
 
     @RequestMapping

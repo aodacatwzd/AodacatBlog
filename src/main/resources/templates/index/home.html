@@ -24,10 +24,12 @@
     <li><a href="#search">Search</a></li>
 </ul>
 <div style="background-color:silver;height: 4000px;margin-top: 60px;">
-    <form role="form" action="#" th:action="@{/home}" th:object="${basicService}" method="post">
-        <input type="text" th:field="*{name}" id="name">
-        <input type="text" th:field="*{context}" id="context">
-        <button type="submit" class="btn btn-primary" id="btn">Submit</button>
+    <form style="margin:0px auto;width: 50%;text-align: center" role="form" action="#" th:action="@{/home}" th:object="${basicService}" method="post">
+        <input style="height:50px;width: 100%;margin: auto" type="text" th:field="*{name}" id="name">
+        <br />
+        <input style="height: 250px;width: 100%;" type="text" th:field="*{context}" id="context">
+        <br />
+        <button type="submit" style="margin:0px auto;align-self:center;width: 70%;height: 50px;" class="btn btn-block" id="btn">Submit</button>
     </form>
     <div th:each="article : ${articleList}">
         <div style="border: #2234cc 2px solid">

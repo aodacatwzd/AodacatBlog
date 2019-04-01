@@ -6,7 +6,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #000;
+    background-color: maroon;
     position: fixed;
     top: 0;
     width: 100%;
@@ -27,9 +27,9 @@ li a {
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color: maroon;
 }
 
 .active {
-    background-color:darkblue;
+    background-color:lawngreen;
 }
