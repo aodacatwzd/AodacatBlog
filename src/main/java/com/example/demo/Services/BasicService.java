@@ -1,9 +1,12 @@
 package com.example.demo.Services;
 
+import com.example.demo.Utils.IpUtil;
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -14,15 +17,15 @@ public class BasicService {
     private String id;
     private String name;
     private String context;
-
+    private String ip;
 
     public void delete(int id){
         jdbcTemplate.update("delete from article where id=?", id);
     }
 
 
-    public void create(String name, String context) {
-        jdbcTemplate.update("insert into article(name,context) values(?, ?)", name, context);
+    public void create(String name, String context,String ip) {
+        jdbcTemplate.update("insert into article(name,context) values(?, ?)", name, context,ip);
     }
 
     public List<BasicService> getArticle(){
@@ -57,6 +60,10 @@ public class BasicService {
 
     public String getId(){
         return id;
+    }
+
+    public String getIP(){
+        return ip;
     }
 }
 
