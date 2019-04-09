@@ -22,6 +22,9 @@ public class MainController {
 
 
     @Autowired
+    private HttpServletRequest request;
+
+    @Autowired
     public MainController(BasicService basicService) {
         this.basicService = basicService;
     }
@@ -41,7 +44,9 @@ public class MainController {
             homePage(model);
         }
         if(basicService1.getName()!=null && basicService1.getContext()!=null) {
-            basicService.create(basicService1.getName(), basicService1.getContext(),IpUtil.getIpAddr(request));
+            System.out.println(IpUtil.getIpAddr(request));
+            basicService1.setIp(IpUtil.getIpAddr(request));
+            basicService.create(basicService1.getName(), basicService1.getContext(),basicService1.getIP());
             homePage(model);
         }
         return "index/home";
@@ -54,4 +59,11 @@ public class MainController {
         model.addAttribute("articleList",articleList);
         return "index/article";
     }
+
+
+    /*@RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test(HttpServletRequest request) {
+        String ipAddress = IpUtil.getIpAddr(request);
+        return ipAddress;
+    }*/
 }

@@ -34,7 +34,7 @@
     <div th:each="article : ${articleList}">
         <div style="border: #2234cc 1px solid;padding: 0px 10px 10px 10px">
             <h3 th:text="${article.getName()}">Title ...</h3>
-            <h5 th:text="'ArticleID:'+${article.getId()}+${ipv4Addr}"></h5>
+            <h5 th:text="'ArticleID:'+${article.getId()}+' IP:'+${article.getIP()}"></h5>
             <div th:id="S+${articleStat.index}" th:utext="${article.getContext()}">1</div>
             <form role="form" action="#" th:action="@{/home}" th:object="${basicService}" method="post">
                 <input style="" type="hidden" th:id="${articleStat.index+1}" th:value="${article.getId()}" th:field="*{id}">
