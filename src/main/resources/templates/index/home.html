@@ -23,7 +23,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#search">Search</a></li>
 </ul>
-<div style="background-color:silver;height: 4000px;margin-top: 55px;margin-left: 20%;margin-right: 20%; ">
+<div style="background-color:#879499;height: 4000px;margin-top: 55px;margin-left: 20%;margin-right: 20%; ">
     <form style="margin:0px auto;width: 50%;text-align: center" role="form" action="#" th:action="@{/home}" th:object="${basicService}" method="post">
         <input style="height:50px;width: 100%;margin: auto" type="text" th:field="*{name}" id="name">
         <br />
@@ -31,8 +31,8 @@
         <br />
         <button type="submit" style="margin:0px auto;align-self:center;width: 70%;height: 50px;" class="btn btn-block" id="btn">Submit</button>
     </form>
-    <div th:each="article : ${articleList}">
-        <div style="border: #2234cc 1px solid;padding: 0px 10px 10px 10px">
+    <div style="overflow: hidden;height: 5%;border: #53d5d0 1.5px solid" th:each="article : ${articleList}">
+        <div style=";padding: 0px 10px 10px 10px">
             <h3 th:text="${article.getName()}">Title ...</h3>
             <h5 th:text="'ArticleID:'+${article.getId()}+' IP:'+${article.getIP()}"></h5>
             <div th:id="S+${articleStat.index}" th:utext="${article.getContext()}">1</div>
