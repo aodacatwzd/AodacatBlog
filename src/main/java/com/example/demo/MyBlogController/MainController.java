@@ -20,7 +20,6 @@ public class MainController {
     BasicService basicService;
 
 
-
     @Autowired
     private HttpServletRequest request;
 
@@ -29,34 +28,34 @@ public class MainController {
         this.basicService = basicService;
     }
 
-    @RequestMapping(value = "/home",method = RequestMethod.GET)
-    public String homePage(Model model){
-        model.addAttribute("basicService",new BasicService());
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String homePage(Model model) {
+        model.addAttribute("basicService", new BasicService());
         List<BasicService> articleList = basicService.getArticle();
-        model.addAttribute("articleList",articleList);
+        model.addAttribute("articleList", articleList);
         return "index/home";
     }
 
-    @RequestMapping(value = "/home",method = RequestMethod.POST)
-    public String InsertArticle(@ModelAttribute BasicService basicService1,Model model,HttpServletRequest request){
-        if(basicService1.getId()!=null) {
+    @RequestMapping(value = "/home", method = RequestMethod.POST)
+    public String InsertArticle(@ModelAttribute BasicService basicService1, Model model, HttpServletRequest request) {
+        if (basicService1.getId() != null) {
             basicService.delete(Integer.parseInt(basicService1.getId()));
             homePage(model);
         }
-        if(basicService1.getName()!=null && basicService1.getContext()!=null) {
+        if (basicService1.getName() != null && basicService1.getContext() != null) {
             System.out.println(IpUtil.getIpAddr(request));
             basicService1.setIp(IpUtil.getIpAddr(request));
-            basicService.create(basicService1.getName(), basicService1.getContext(),basicService1.getIP());
+            basicService.create(basicService1.getName(), basicService1.getContext(), basicService1.getIP());
             homePage(model);
         }
         return "index/home";
     }
 
-    @RequestMapping(value = "/article",method = RequestMethod.GET)
-    public String articlePage(Model model){
-        model.addAttribute("basicService",new BasicService());
+    @RequestMapping(value = "/article", method = RequestMethod.GET)
+    public String articlePage(Model model) {
+        model.addAttribute("basicService", new BasicService());
         List<BasicService> articleList = basicService.getArticle();
-        model.addAttribute("articleList",articleList);
+        model.addAttribute("articleList", articleList);
         return "index/article";
     }
 
