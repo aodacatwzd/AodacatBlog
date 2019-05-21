@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sun.net.util.IPAddressUtil;
@@ -54,5 +55,21 @@ public class MainController {
         List<BasicService> articleList = basicService.getArticle();
         model.addAttribute("articleList", articleList);
         return "index/article";
+    }
+
+    @RequestMapping(value ="/articleList",method = RequestMethod.GET)
+    public String articleList(Model model){
+        model.addAttribute("basicService", new BasicService());
+        List<BasicService> articleList =basicService.getArticle();
+        model.addAttribute("articleList",articleList);
+        return "index/articleList";
+    }
+
+    @RequestMapping(value = "/archives/{id}",method = RequestMethod.GET)
+    public String Articles(Model model, @PathVariable("id") Integer id){
+        BasicService basicService1 = new BasicService();
+        basicService1.setId(id.toString());
+        model.addAttribute("article",basicService1);
+        return "article";
     }
 }

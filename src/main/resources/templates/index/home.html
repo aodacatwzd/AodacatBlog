@@ -9,7 +9,6 @@
                                             -->
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script th:src="@{home.js}" type="text/javascript"></script>
-    <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{home.css}"/>
     <link rel="shortcut icon" href="/static/FileBase/favicon.ico">
     <meta charset="UTF-8"/>
@@ -18,15 +17,21 @@
 <body style="background-color: #eeeeee">
 <div class="div-top-bar">
     <p class="p-top-left">home</p>
-    <p class="p-top-right" onclick="javascrpt:window.location.href='https://baike.baidu.com/item/%E4%B9%94%E5%BB%BA%E6%B0%B8/1888942?fr=aladdin'">about me</p>
-    <p class="p-top-right">articles</p>
+    <p class="p-top-right" onclick="javascript:window.location.href='https://baike.baidu.com/item/%E4%B9%94%E5%BB%BA%E6%B0%B8/1888942?fr=aladdin'">about me</p>
+    <p class="p-top-right" onclick="javascript:window.location.href='/articleList'">articles</p>
 </div>
 <div class="div-coverIMG">
     <p class="mainTitle">Wish you were here</p>
 </div>
 
 <div class="articleList" >
-    <div class="article" th:each="article : ${articleList}" th:if="${articleStat.count<=6}" >
+    <div class="article" th:id="S+${articleStat.index+1}" th:each="article : ${articleList}" th:if="${articleStat.count<=6}" >
+        <script th:inline="javascript">
+            var src =[[${article.getSrc()}]];
+            console.log(src);
+            var id = S[[${articleStat.count}]];
+            $(id).css("background-image","url(" + src + ")");
+        </script>
         <h4 class="text-on-articleIMG">
             <p th:text="${article.getName()}"></p>
         </h4>

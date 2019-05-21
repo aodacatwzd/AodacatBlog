@@ -10,7 +10,6 @@
     <script th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}" type="text/javascript"></script>
     <script th:src="@{home.js}" type="text/javascript"></script>
     <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{.css}">
     <meta charset="UTF-8"/>
     <title>Article</title>
 </head>
@@ -32,6 +31,8 @@
         <h3 th:text="${article.getName()}">Title ...</h3>
         <h5 th:text="'ArticleID:'+${article.getId()}+' IP:'+${article.getIP()}"></h5>
         <div th:id="S+${articleStat.index}" th:utext="${article.getContext()}">1</div>
+        <img th:src="${article.getSrc()}" alt="222"/>
+        <div th:text="${article.getSrc()}"></div>
         <form role="form" action="#" th:action="@{/}" th:object="${basicService}" method="post">
             <input style="" type="hidden" th:id="${articleStat.index+1}" th:value="${article.getId()}" th:field="*{id}">
             <script th:inline="javascript">

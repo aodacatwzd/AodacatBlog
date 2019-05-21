@@ -54,10 +54,11 @@
 .articleList{
     display: flex;
     flex-wrap: wrap;
-    background-color: #aaaaaa;
-    min-width: 100%;
-    max-width: 100%;
-    margin: auto;
+    background-color: #ffffff;
+    min-width: 90%;
+    max-width: 90%;
+    margin: 5%;
+    padding-top: 5%;
     height: 1200px;
     box-shadow: 1px 1px 1px #888888;
 }
@@ -100,5 +101,9 @@
 }
 
 p,h1,h2,h3,h5,h5{
+    margin: 0;
+}
+
+body{
     margin: 0;
 }
