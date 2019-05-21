@@ -21,14 +21,11 @@ public class MainController {
 
 
     @Autowired
-    private HttpServletRequest request;
-
-    @Autowired
     public MainController(BasicService basicService) {
         this.basicService = basicService;
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage(Model model) {
         model.addAttribute("basicService", new BasicService());
         List<BasicService> articleList = basicService.getArticle();
@@ -36,7 +33,7 @@ public class MainController {
         return "index/home";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     public String InsertArticle(@ModelAttribute BasicService basicService1, Model model, HttpServletRequest request) {
         if (basicService1.getId() != null) {
             basicService.delete(Integer.parseInt(basicService1.getId()));
@@ -45,10 +42,10 @@ public class MainController {
         if (basicService1.getName() != null && basicService1.getContext() != null) {
             System.out.println(IpUtil.getIpAddr(request));
             basicService1.setIp(IpUtil.getIpAddr(request));
-            basicService.create(basicService1.getName(), basicService1.getContext(), basicService1.getIP());
+            basicService.create(basicService1.getName(), basicService1.getContext(), basicService1.getIP(),basicService1.getSrc());
             homePage(model);
         }
-        return "index/home";
+        return "index/article";
     }
 
     @RequestMapping(value = "/article", method = RequestMethod.GET)
@@ -58,11 +55,4 @@ public class MainController {
         model.addAttribute("articleList", articleList);
         return "index/article";
     }
-
-
-    /*@RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test(HttpServletRequest request) {
-        String ipAddress = IpUtil.getIpAddr(request);
-        return ipAddress;
-    }*/
 }

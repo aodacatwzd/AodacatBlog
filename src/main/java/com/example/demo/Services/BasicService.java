@@ -15,14 +15,15 @@ public class BasicService {
     private String name;
     private String context;
     private String ip;
+    private String src;
 
     public void delete(int id) {
         jdbcTemplate.update("delete from article where id=?", id);
     }
 
 
-    public void create(String name, String context, String ip) {
-        jdbcTemplate.update("insert into article(name,context,ipv4Addr) values(?, ?, ?)", name, context, ip);
+    public void create(String name, String context, String ip,String src) {
+        jdbcTemplate.update("insert into article(name,context,ipv4Addr,imgSrc) values(?, ?, ?, ?)", name, context, ip, src);
     }
 
     public List<BasicService> getArticle() {
@@ -32,6 +33,7 @@ public class BasicService {
             basicService.setName(resultSet.getString(2));
             basicService.setContext(resultSet.getString(3));
             basicService.setIp(resultSet.getString(4));
+            basicService.setSrc(resultSet.getString(5));
             return basicService;
         });
     }
@@ -66,6 +68,14 @@ public class BasicService {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public String getSrc(){
+        return src;
+    }
+
+    public void setSrc(String src){
+        this.src=src;
     }
 }
 

@@ -3,6 +3,9 @@
     height: 52px;
     background-color: #333333;
     margin: auto;
+    top:0;
+    position: fixed;
+    z-index: 99;
 }
 
 .p-top-left{
@@ -32,8 +35,8 @@
 
 .div-coverIMG{
     margin: auto;
-    min-height: 1080px;
-    max-height: 1080px;
+    min-height: 1280px;
+    max-height: 1280px;
     width:100%;
     background-color: aqua;
     display: block;
@@ -46,6 +49,54 @@
     color: #ffffff;
     font-size: 65px;
     text-align: center;
+}
+
+.articleList{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #aaaaaa;
+    min-width: 100%;
+    max-width: 100%;
+    margin: auto;
+    height: 1200px;
+    box-shadow: 1px 1px 1px #888888;
+}
+
+.article{
+    position: relative;
+    left: 0;
+    top:0;
+    background-image: url("./FileBase/test.jpg");
+    margin-left: 5%;
+    margin-right: 5%;
+    min-width: 40%;
+    max-width: 40%;
+    min-height: 30%;
+    max-height: 30%;
+    background-size: 100% 100%;
+    overflow: hidden;
+    transition: box-shadow .3s ease-in;
+}
+
+.article:hover{
+    cursor: pointer;
+    box-shadow: -1px -1px 1px #888888;
+    transform: scale(0.99);
+    transition: transform .2s ease-in;
+}
+
+.article:active{
+    transform: scale(0.99);
+    box-shadow: -2px -2px 2px #333333;
+}
+
+.text-on-articleIMG{
+    margin-top: 40%;
+    text-align: left;
+    font-size: 35px;
+    color: #ffffff;
+    margin-left: 20px;
+    user-select: none;
 }
 
 p,h1,h2,h3,h5,h5{
