@@ -1,0 +1,23 @@
+body {
+    margin: 0 auto;
+}
+
+p, h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+.imgContainer {
+    width: 80%;
+    max-height: 800px;
+    min-height: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+img {
+    height: 800px;
+    width: 100%;
+}
+
+

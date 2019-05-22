@@ -42,7 +42,7 @@ public class IpUtil {
                 }
             }
         } catch (Exception e) {
-            ipAddress="";
+            ipAddress = "";
         }
         // ipAddress = this.getRequest().getRemoteAddr();
 

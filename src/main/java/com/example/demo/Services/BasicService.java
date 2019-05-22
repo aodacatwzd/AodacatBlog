@@ -22,12 +22,12 @@ public class BasicService {
     }
 
 
-    public void create(String name, String context, String ip,String src) {
+    public void create(String name, String context, String ip, String src) {
         jdbcTemplate.update("insert into article(name,context,ipv4Addr,imgSrc) values(?, ?, ?, ?)", name, context, ip, src);
     }
 
-    public List<BasicService> getArticle() {
-        return jdbcTemplate.query("select * from article;", (ResultSet resultSet, int i) -> {
+    public List<BasicService> getArticle(String sql) {
+        return jdbcTemplate.query(sql, (ResultSet resultSet, int i) -> {
             BasicService basicService = new BasicService();
             basicService.setId(resultSet.getString(1));
             basicService.setName(resultSet.getString(2));
@@ -37,6 +37,7 @@ public class BasicService {
             return basicService;
         });
     }
+
 
     public String getName() {
         return name;
@@ -70,12 +71,12 @@ public class BasicService {
         this.ip = ip;
     }
 
-    public String getSrc(){
+    public String getSrc() {
         return src;
     }
 
-    public void setSrc(String src){
-        this.src=src;
+    public void setSrc(String src) {
+        this.src = src;
     }
 }
 

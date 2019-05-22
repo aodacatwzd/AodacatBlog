@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-        <!--    _    ___  ____    _    ____    _  _____
-       / \  / _ \|  _ \  / \  / ___|  / \|_   _|
-      / _ \| | | | | | |/ _ \| |     / _ \ | |
-     / ___ \ |_| | |_| / ___ \ |___ / ___ \| |
-    /_/   \_\___/|____/_/   \_\____/_/   \_\_|
-                                            -->
+    <!--    _    ___  ____    _    ____    _  _____
+   / \  / _ \|  _ \  / \  / ___|  / \|_   _|
+  / _ \| | | | | | |/ _ \| |     / _ \ | |
+ / ___ \ |_| | |_| / ___ \ |___ / ___ \| |
+/_/   \_\___/|____/_/   \_\____/_/   \_\_|
+                                        -->
     <script th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}" type="text/javascript"></script>
     <script th:src="@{home.js}" type="text/javascript"></script>
     <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="shortcut icon" href="/static/favicon.ico">
     <meta charset="UTF-8"/>
     <title>Article</title>
 </head>
 <body style="width: 100%;">
 <div style="background-color:#879499;margin-top: 55px;margin-left: 20%;margin-right: 20%; ">
-    <form style="margin:0px auto;width: 50%;text-align: center" role="form" action="#" th:action="@{/}" th:object="${basicService}" method="post">
+    <form style="margin:0px auto;width: 50%;text-align: center" role="form" action="#" th:action="@{/}"
+          th:object="${basicService}" method="post">
         <input style="height:50px;width: 100%;margin: auto" type="text" th:field="*{name}" id="name">
         <input style="height:50px;width: 100%;margin: auto" type="text" th:field="*{src}" id="src">
-        <br />
-        <textarea style="height: 250px;width: 100%;resize: none" type="text" th:field="*{context}" id="context"></textarea>
-        <br />
-        <button type="submit" style="margin:0px auto;align-self:center;width: 70%;height: 50px;" class="btn btn-block" id="btn">Submit</button>
+        <br/>
+        <textarea style="height: 250px;width: 100%;resize: none" type="text" th:field="*{context}"
+                  id="context"></textarea>
+        <br/>
+        <button type="submit" style="margin:0px auto;align-self:center;width: 70%;height: 50px;" class="btn btn-block"
+                id="btn">Submit
+        </button>
     </form>
 </div>
 <div style="overflow: hidden;height: 5%;border: #53d5d0 1.5px solid" th:each="article : ${articleList}">

@@ -29,7 +29,7 @@ public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage(Model model) {
         model.addAttribute("basicService", new BasicService());
-        List<BasicService> articleList = basicService.getArticle();
+        List<BasicService> articleList = basicService.getArticle("select * from article;");
         model.addAttribute("articleList", articleList);
         return "index/home";
     }
@@ -43,7 +43,7 @@ public class MainController {
         if (basicService1.getName() != null && basicService1.getContext() != null) {
             System.out.println(IpUtil.getIpAddr(request));
             basicService1.setIp(IpUtil.getIpAddr(request));
-            basicService.create(basicService1.getName(), basicService1.getContext(), basicService1.getIP(),basicService1.getSrc());
+            basicService.create(basicService1.getName(), basicService1.getContext(), basicService1.getIP(), basicService1.getSrc());
             homePage(model);
         }
         return "index/article";
@@ -52,24 +52,25 @@ public class MainController {
     @RequestMapping(value = "/article", method = RequestMethod.GET)
     public String articlePage(Model model) {
         model.addAttribute("basicService", new BasicService());
-        List<BasicService> articleList = basicService.getArticle();
+        List<BasicService> articleList = basicService.getArticle("select * from article;");
         model.addAttribute("articleList", articleList);
         return "index/article";
     }
 
-    @RequestMapping(value ="/articleList",method = RequestMethod.GET)
-    public String articleList(Model model){
+    @RequestMapping(value = "/articleList", method = RequestMethod.GET)
+    public String articleList(Model model) {
         model.addAttribute("basicService", new BasicService());
-        List<BasicService> articleList =basicService.getArticle();
-        model.addAttribute("articleList",articleList);
+        List<BasicService> articleList = basicService.getArticle("select * from article");
+        model.addAttribute("articleList", articleList);
         return "index/articleList";
     }
 
-    @RequestMapping(value = "/archives/{id}",method = RequestMethod.GET)
-    public String Articles(Model model, @PathVariable("id") Integer id){
-        BasicService basicService1 = new BasicService();
-        basicService1.setId(id.toString());
-        model.addAttribute("article",basicService1);
-        return "article";
+    @RequestMapping(value = "/articleOpen/{id}", method = RequestMethod.GET)
+    public String Articles(Model model, @PathVariable("id") Integer id) {
+        model.addAttribute("basicService", new BasicService());
+        String sql = "select * from article where id=" + id + ";";
+        List<BasicService> articleList = basicService.getArticle(sql);
+        model.addAttribute("articleList", articleList);
+        return "index/articleOpen";
     }
 }
