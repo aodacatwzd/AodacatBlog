@@ -76,6 +76,6 @@ public class MainController {
 
     @RequestMapping(value = "/surprise",method = RequestMethod.GET)
     public String Hello(){
-        return "/index/hello";
+        return "/index/Hello";
     }
 }
