@@ -74,7 +74,7 @@ public class MainController {
         return "index/articleOpen";
     }
 
-    @RequestMapping(value = "/aodacat",method = RequestMethod.GET)
+    @RequestMapping(value = "/surprise",method = RequestMethod.GET)
     public String Hello(){
         return "/index/hello";
     }

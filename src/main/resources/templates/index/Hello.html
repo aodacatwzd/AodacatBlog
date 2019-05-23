@@ -64,12 +64,12 @@
         this.orbitX = w / 2;
         this.orbitY = h / 2;
         this.timePassed = random(0, maxStars);
-        this.speed = random(this.orbitRadius) / 600000;
+        this.speed = random(this.orbitRadius) / 180000;
         this.alpha = random(2, 10) / 10;
 
         count++;
         stars[count] = this;
-    }
+    };
 
     Star.prototype.draw = function () {
         var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
@@ -85,7 +85,7 @@
         ctx.globalAlpha = this.alpha;
         ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
         this.timePassed += this.speed;
-    }
+    };
 
     for (var i = 0; i < maxStars; i++) {
         new Star();
@@ -95,13 +95,13 @@
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 0.9;
         ctx.fillStyle = "#111111";
-        ctx.fillRect(0, 0, w, h)
+        ctx.fillRect(0, 0, w, h);
 
         ctx.globalCompositeOperation = 'lighter';
         for (var i = 1, l = stars.length; i < l; i++) {
             stars[i].draw();
         }
-        ;
+
 
         window.requestAnimationFrame(animation);
     }
