@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{articleList.css}"/>
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <title>ArticleList</title>
+</head>
+<body>
+<div class="div-top-bar">
+    <p class="p-top-left" onclick="window.location.href='/'">home</p>
+    <p class="p-top-right"
+       onclick="window.location.href='https://baike.baidu.com/item/%E4%B9%94%E5%BB%BA%E6%B0%B8/1888942?fr=aladdin'">
+        about me</p>
+    <p class="p-top-right" onclick="window.location.href='/articleList'">articles</p>
+</div>
+<div style="margin-top: 5%">
+    <div style="margin: auto;" th:each="article :${articleList}">
+        <div class="article">
+            <img class="imgSmall" th:src="${article.getSrc()}" alt="Pic"/>
+            <div class="text-bar">
+                <p class="text-first" th:text="${article.getName()}"></p>
+                <p class="text-second" th:text="${article.getContext()}"></p></div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>
