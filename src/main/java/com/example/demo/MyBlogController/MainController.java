@@ -73,4 +73,9 @@ public class MainController {
         model.addAttribute("articleList", articleList);
         return "index/articleOpen";
     }
+
+    @RequestMapping(value = "/aodacat",method = RequestMethod.GET)
+    public String Hello(){
+        return "/index/hello";
+    }
 }
