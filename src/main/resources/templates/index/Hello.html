@@ -8,6 +8,15 @@
 </head>
 <body>
 <canvas id="canvas"></canvas>
+
+<div class="title-container">
+    <h1 class="title" id="dva">DVA</h1>
+</div>
+<script>
+    $("#dva").css("font-size", "72px");
+
+</script>
+
 <script>
     "use strict";
     var canvas = document.getElementById('canvas'),
@@ -17,7 +26,7 @@
         hue = 255,
         stars = [],
         count = 0,
-        maxStars = 425;
+        maxStars = 1600;
 
 
     var canvas2 = document.createElement('canvas'),
@@ -26,8 +35,8 @@
     canvas2.height = 50;
     var half = canvas2.width / 2,
         gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
-    gradient2.addColorStop(0.025, '#CCC');
-    gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+    gradient2.addColorStop(0.025, '#fff');
+    gradient2.addColorStop(0.1, 'hsl(' + hue + ', 70%, 33%)');
     gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
     gradient2.addColorStop(1, 'transparent');
 
@@ -62,10 +71,10 @@
         this.orbitRadius = random(maxOrbit(w, h));
         this.radius = random(60, this.orbitRadius) / 4;
         this.orbitX = w / 2;
-        this.orbitY = h / 2;
+        this.orbitY = h / 4;
         this.timePassed = random(0, maxStars);
         this.speed = random(this.orbitRadius) / 180000;
-        this.alpha = random(2, 10) / 10;
+        this.alpha = random(5, 10) / 10;
 
         count++;
         stars[count] = this;
@@ -74,7 +83,7 @@
     Star.prototype.draw = function () {
         var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
             y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
-            twinkle = random(2);
+            twinkle = random(10);
 
         if (twinkle === 1 && this.alpha > 0) {
             this.alpha -= 0.05;
@@ -94,7 +103,7 @@
     function animation() {
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 0.9;
-        ctx.fillStyle = "#111111";
+        ctx.fillStyle = "#000000";
         ctx.fillRect(0, 0, w, h);
 
         ctx.globalCompositeOperation = 'lighter';
