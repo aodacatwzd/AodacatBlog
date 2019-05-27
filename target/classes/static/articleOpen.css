@@ -3,9 +3,9 @@ body {
     margin: 0 auto;
 }
 
-p, h1, h2, h3, h4, h5 {
+/*p, h1, h2, h3, h4, h5 {
     margin: 0;
-}
+}*/
 
 .imgContainer {
     width: 65%;
@@ -34,13 +34,23 @@ img {
 
 .comment{
     height: 65px;
+    background-color: #cccccc;
 }
 
 .comment-pane{
-    min-width: 65%;
-    max-width: 65%;
-    background-color: #53d5d0;
-    margin: 0 auto;
+
+    min-width: 50%;
+    max-width: 50%;
+
+    margin: 30px auto 0;
+}
+
+.input{
+    border-radius: 12px;
+    height:50px;
+    width: 100%;
+    margin: auto;
+    border: 0;
 }
 
 .addComment{
@@ -116,6 +126,10 @@ img {
     float: right;
     padding: 16px 20px 16px 20px;
     user-select: none;
+}
+
+hr{
+    width: 90%;
 }
 
 
