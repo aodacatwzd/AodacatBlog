@@ -32,6 +32,21 @@ img {
     z-index: 99;
 }
 
+.comment{
+    height: 65px;
+}
+
+.comment-pane{
+    min-width: 65%;
+    max-width: 65%;
+    background-color: #53d5d0;
+    margin: 0 auto;
+}
+
+.addComment{
+    height: 65px;
+}
+
 .title{
     margin: 0 auto;
     text-align: center;

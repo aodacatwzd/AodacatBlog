@@ -1,6 +1,7 @@
 package com.example.demo.MyBlogController;
 
 import com.example.demo.Services.BasicService;
+import com.example.demo.Services.CommentService;
 import com.example.demo.Utils.IpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,14 +18,11 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/")
 public class MainController {
-    private final
+    @Autowired
     BasicService basicService;
 
-
     @Autowired
-    public MainController(BasicService basicService) {
-        this.basicService = basicService;
-    }
+    CommentService commentService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage(Model model) {
@@ -68,9 +66,20 @@ public class MainController {
     @RequestMapping(value = "/articleOpen/{id}", method = RequestMethod.GET)
     public String Articles(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("basicService", new BasicService());
-        String sql = "select * from article where id=" + id + ";";
-        List<BasicService> articleList = basicService.getArticle(sql);
+        model.addAttribute("commentService",new CommentService());
+        String sql1 = "select * from article where id=" + id + ";";
+        String sql2 = "select * from comment where id=" + id + ";";
+        List<BasicService> articleList = basicService.getArticle(sql1);
+        List<CommentService> commentList = commentService.getComment(sql2);
         model.addAttribute("articleList", articleList);
+        model.addAttribute("commentList",commentList);
+        return "index/articleOpen";
+    }
+
+    @RequestMapping(value = "/articleOpen/{id}",method = RequestMethod.POST)
+    public String InsertComment(@ModelAttribute CommentService commentService1,Model model,@PathVariable("id") Integer id){
+        commentService.create(commentService1.getUsername(), commentService1.getContent(),id.toString());
+        Articles(model,id);
         return "index/articleOpen";
     }
 
