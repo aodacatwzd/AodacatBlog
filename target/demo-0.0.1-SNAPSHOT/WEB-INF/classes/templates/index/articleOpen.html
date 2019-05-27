@@ -29,5 +29,26 @@
         <div th:id="S+${articleStat.index}" th:utext="${article.getContext()}">1</div>
     </div>
 </div>
+
+<div class="comment-pane" th:each="comment:${commentList}">
+    <div class="comment">
+        <p th:text="${comment.getUsername()}">
+            2222
+        </p>
+        <p th:text="${comment.getContent()}">
+            2222
+        </p>
+    </div>
+
+</div>
+<div class="addComment">
+    <form style="margin:0px auto;width: 50%;text-align: center" role="form" action="#" th:object="${commentService}" method="post">
+        <input style="height:50px;width: 100%;margin: auto" type="text" th:field="*{username}" id="name" />
+        <input style="height:50px;width: 100%;margin: auto" type="text" th:field="*{content}" id="content" />
+        <button type="submit" style="margin:0px auto;align-self:center;width: 70%;height: 50px;" class="btn btn-block"
+                id="btn">Submit
+        </button>
+    </form>
+</div>
 </body>
 </html>
