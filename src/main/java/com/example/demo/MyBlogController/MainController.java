@@ -77,7 +77,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/articleOpen/{id}",method = RequestMethod.POST)
-    public String InsertComment(@ModelAttribute CommentService commentService1,Model model,@PathVariable("id") Integer id){
+    public String InsertComment(@ModelAttribute CommentService commentService1,Model model, HttpServletRequest request,@PathVariable("id") Integer id){
         commentService.create(commentService1.getUsername(), commentService1.getContent(),id.toString());
         Articles(model,id);
         return "index/articleOpen";
