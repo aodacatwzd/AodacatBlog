@@ -1,6 +1,5 @@
 com\example\demo\DemoApplication.class
 com\example\demo\MyBlogController\ErrController.class
-com\example\demo\Utils\TimeUtil.class
 com\example\demo\Utils\IpUtil.class
 com\example\demo\Services\BasicService.class
 com\example\demo\MyBlogController\MainController.class

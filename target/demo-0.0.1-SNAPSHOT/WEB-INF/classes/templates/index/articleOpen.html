@@ -36,10 +36,16 @@
         <img class="headIMG" src="../FileBase/1.jpg" alt="img"/>
     </div>
     <div class="comment">
-        <h3 style="flex:1" th:text="${comment.getUsername()}">
+
+        <h4 style="margin-bottom: 10px;" th:text="${comment.getUsername()}+' from '+${comment.getIp()}">
             2222
-        </h3>
-        <p th:text="${comment.getContent()}" style="flex:1;word-break: break-all;word-wrap: break-word;">
+        </h4>
+        <hr />
+        <p th:text="${comment.getContent()}" style="word-break: break-all;word-wrap: break-word;margin-bottom: 10px;">
+            2222
+        </p>
+
+        <p th:text="'Presented at '+${comment.getTime()}" style="float: right">
             2222
         </p>
     </div>
