@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import sun.net.util.IPAddressUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -66,25 +65,27 @@ public class MainController {
     @RequestMapping(value = "/articleOpen/{id}", method = RequestMethod.GET)
     public String Articles(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("basicService", new BasicService());
-        model.addAttribute("commentService",new CommentService());
+        model.addAttribute("commentService", new CommentService());
         String sql1 = "select * from article where id=" + id + ";";
         String sql2 = "select * from comment where id=" + id + ";";
         List<BasicService> articleList = basicService.getArticle(sql1);
         List<CommentService> commentList = commentService.getComment(sql2);
         model.addAttribute("articleList", articleList);
-        model.addAttribute("commentList",commentList);
+        model.addAttribute("commentList", commentList);
         return "index/articleOpen";
     }
 
-    @RequestMapping(value = "/articleOpen/{id}",method = RequestMethod.POST)
-    public String InsertComment(@ModelAttribute CommentService commentService1,Model model, HttpServletRequest request,@PathVariable("id") Integer id){
-        commentService.create(commentService1.getUsername(), commentService1.getContent(),id.toString());
-        Articles(model,id);
+    @RequestMapping(value = "/articleOpen/{id}", method = RequestMethod.POST)
+    public String InsertComment(@ModelAttribute CommentService commentService1, Model model, HttpServletRequest request, @PathVariable("id") Integer id) {
+        System.out.println(IpUtil.getIpAddr(request));
+        commentService1.setIp(IpUtil.getIpAddr(request));
+        commentService.create(commentService1.getUsername(), commentService1.getContent(), id.toString(), commentService1.getIp());
+        Articles(model, id);
         return "index/articleOpen";
     }
 
-    @RequestMapping(value = "/surprise",method = RequestMethod.GET)
-    public String Hello(){
+    @RequestMapping(value = "/surprise", method = RequestMethod.GET)
+    public String Hello() {
         return "/index/Hello";
     }
 }
