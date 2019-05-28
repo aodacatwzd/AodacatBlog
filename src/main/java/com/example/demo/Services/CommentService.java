@@ -17,14 +17,15 @@ public class CommentService {
     private String username;
     private String content;
     private String ip;
+    private String time;
 
 
     public void delete(String commentID) {
         jdbcTemplate.update("delete from article where commentID=?", commentID);
     }
 
-    public void create(String username, String content, String id, String ip) {
-        jdbcTemplate.update("insert into comment(username,content,id,ip) values(?, ?, ?, ?)", username, content, id, ip);
+    public void create(String username, String content, String id, String ip, String time) {
+        jdbcTemplate.update("insert into comment(username,content,id,ip,time) values(?, ?, ?, ?,?)", username, content, id, ip,time);
     }
 
     public List<CommentService> getComment(String sql) {
@@ -35,6 +36,7 @@ public class CommentService {
             commentService.setContent(resultSet.getString(3));
             commentService.setId(resultSet.getString(4));
             commentService.setIp(resultSet.getString(5));
+            commentService.setTime(resultSet.getString(6));
             return commentService;
         });
     }
@@ -77,5 +79,13 @@ public class CommentService {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public String getTime(){
+        return time;
+    }
+
+    public void setTime(String time){
+        this.time=time;
     }
 }

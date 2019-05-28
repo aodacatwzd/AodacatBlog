@@ -1,5 +1,5 @@
 body {
-    background-color: #d2e9fb;
+    background: #333 linear-gradient(to top, #333, #eeeeee);
     margin: 0 auto;
     user-select: none;
 }
@@ -28,17 +28,16 @@ img {
     min-width: 50%;
     max-width: 50%;
     height: 900px;
-    background-color: #659992;
+    background-color: #aaaaaa;
     margin: -200px auto auto;
-    z-index: 99;
+    z-index: 91;
 }
 
 .comment{
-    display: flex;
-    flex-direction: column;
+    display: table-cell;
     flex:9;
     height: 65px;
-    padding:20px 40px 20px 0;
+    padding:20px 20px 20px 0;
 }
 
 .comment-pane{
@@ -46,8 +45,8 @@ img {
     flex-direction: row;
     min-width: 50%;
     max-width: 50%;
-    background-color: #eeeeee;
-    margin: 30px auto 0;
+    background: #333 linear-gradient(to right, #666, #eeeeee);
+    margin: 15px auto 0;
     border-radius: 10px;
 }
 
@@ -56,7 +55,7 @@ img {
     flex:1;
     padding-left: 15px;
     padding-top: 15px;
-    height: 105px;
+    height: 85px;
     overflow: hidden;
 }
 
@@ -67,6 +66,7 @@ img {
 }
 
 .input{
+    outline: none;
     border-radius: 12px;
     height:50px;
     width: 100%;
@@ -74,8 +74,17 @@ img {
     border: 0;
 }
 
+.input:hover{
+    border-radius: 12px;
+    border: #777777 1px solid;
+}
+
+.input:active{
+    border: #222222 1px solid;
+}
+
 .addComment{
-    height: 65px;
+    height: 195px;
 }
 
 .title{
@@ -150,7 +159,11 @@ img {
 }
 
 hr{
-    width: 90%;
+    width:70%;
+    margin: 0 0 10px;
+    border: 0;
+    height: 2px;
+    background: #333 linear-gradient(to right, #333, #fff);
 }
 
 
