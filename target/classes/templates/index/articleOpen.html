@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
@@ -31,16 +32,17 @@
 </div>
 
 <div class="comment-pane" th:each="comment:${commentList}">
+    <div class="comment-head-img">
+        <img class="headIMG" src="../FileBase/1.jpg" alt="img"/>
+    </div>
     <div class="comment">
         <h3 th:text="${comment.getUsername()}">
             2222
         </h3>
-        <p th:text="${comment.getContent()}">
+        <p th:text="${comment.getContent()}" style="word-break: break-all;word-wrap: break-word;">
             2222
         </p>
-
     </div>
-    <hr />
 </div>
 <div class="addComment">
     <form style="margin:0 auto;width: 50%;text-align: center" role="form" action="#" th:object="${commentService}" method="post">

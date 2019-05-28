@@ -1,6 +1,7 @@
 body {
-    background-color: #aaaaaa;
+    background-color: #d2e9fb;
     margin: 0 auto;
+    user-select: none;
 }
 
 p, h1, h2, h3, h4, h5 {
@@ -27,22 +28,44 @@ img {
     min-width: 50%;
     max-width: 50%;
     height: 900px;
-    background-color: white;
+    background-color: #659992;
     margin: -200px auto auto;
     z-index: 99;
 }
 
 .comment{
+    display: flex;
+    flex-direction: column;
+    flex:9;
     height: 65px;
-    background-color: #cccccc;
+    padding:25px 40px 25px 0;
 }
 
 .comment-pane{
-
+    display: flex;
+    flex-direction: row;
     min-width: 50%;
     max-width: 50%;
-
+    background-color: #eeeeee;
     margin: 30px auto 0;
+}
+
+.comment-pane:hover{
+    border: 1px solid #2374ee;
+}
+
+.comment-head-img{
+    flex:1;
+    padding-left: 15px;
+    padding-top: 15px;
+    height: 105px;
+    overflow: hidden;
+}
+
+.headIMG{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
 }
 
 .input{
