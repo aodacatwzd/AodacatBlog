@@ -19,8 +19,6 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/")
 public class MainController {
-
-    Date date = new Date();
     private SimpleDateFormat simpleDateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private final
     BasicService basicService;
@@ -89,6 +87,7 @@ public class MainController {
     public String InsertComment(@ModelAttribute CommentService commentService1, Model model, HttpServletRequest request, @PathVariable("id") Integer id) {
         System.out.println(IpUtil.getIpAddr(request));
         commentService1.setIp(IpUtil.getIpAddr(request));
+        Date date = new Date();
         commentService1.setTime(simpleDateFormat.format(date));
         commentService.create(commentService1.getUsername(), commentService1.getContent(), id.toString(), commentService1.getIp() ,commentService1.getTime());
         Articles(model, id);
