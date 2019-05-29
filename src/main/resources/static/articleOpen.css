@@ -27,7 +27,7 @@ img {
 .contextPane{
     min-width: 50%;
     max-width: 50%;
-    height: 900px;
+    min-height: 900px;
     background-color: #aaaaaa;
     margin: -200px auto auto;
     z-index: 91;
@@ -107,7 +107,8 @@ img {
 }
 .title{
     text-align: center;
-    margin: 65px auto 0;
+    margin: 75px auto 0;
+    font-size: 2.3em;
 }
 
 .article{
