@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{articleList.css}"/>
     <link rel="shortcut icon" href="/static/favicon.ico">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <title>ArticleList</title>
 </head>
 <body>
@@ -16,7 +17,15 @@
 </div>
 <div style="margin-top: 5%">
     <div style="margin: auto;overflow: hidden;" th:each="article :${articleList}">
-        <div class="article">
+
+        <div class="article" th:id="S+${articleStat.index+1}" id="3274283">
+            <script th:inline="javascript">
+                var src = [[${article.getSrc()}]];
+                var id = S[[${articleStat.count}]];
+                var Aid = [[${article.getId()}]];
+                var str = "window.location.href='/articleOpen/" + Aid + "'";
+                $(id).attr("onclick", str);
+            </script>
             <img class="imgSmall" th:src="${article.getSrc()}" alt="Pic" src="#"/>
             <div class="text-bar">
                 <p class="text-first" th:text="${article.getName()}"></p>

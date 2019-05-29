@@ -41,7 +41,7 @@ img {
 }
 
 .comment-pane{
-    height:125px;
+    height: 125px;
     display: flex;
     flex-direction: row;
     min-width: 50%;
