@@ -84,6 +84,7 @@ img {
     border-radius: 10px;
     margin-top: 35px;
     height: 195px;
+    margin-bottom: 35px;
 }
 
 .myBTN{
@@ -105,8 +106,8 @@ img {
     box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
 }
 .title{
-    margin: 0 auto;
     text-align: center;
+    margin: 65px auto 0;
 }
 
 .article{
@@ -181,6 +182,24 @@ hr{
     border: 0;
     height: 2px;
     background: #333 linear-gradient(to right, #333, #fff);
+}
+
+@keyframes showIndex {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hideIndex {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 
