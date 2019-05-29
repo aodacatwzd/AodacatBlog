@@ -29,7 +29,7 @@ body {
 }
 
 .p-top-left:active, .p-top-right:active {
-    box-shadow: 1px 1px 1px #222222;
+    box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
     background-color: #111111;
 }
 
@@ -46,7 +46,7 @@ body {
     max-height: 250px;
     width: 65%;
     margin: 1% auto;
-    box-shadow: 2px 2px 2px #879499;
+    box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
     display: flex;
     flex-direction: row;
     background-color: skyblue;

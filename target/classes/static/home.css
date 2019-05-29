@@ -46,7 +46,7 @@
 }
 
 .p-top-left:active, .p-top-right:active {
-    box-shadow: 1px 1px 1px #222222;
+    box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
     background-color: #111111;
 }
 
@@ -105,14 +105,14 @@
 
 .article:hover {
     cursor: pointer;
-    box-shadow: 0px 0px 8px #888888;
+    box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
     transform: scale(0.99);
     transition: transform .2s ease-in;
 }
 
 .article:active {
     transform: scale(1.00);
-    box-shadow: 0px 0px 16px #333333;
+    box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
 }
 
 .text-on-articleIMG {
