@@ -66,7 +66,7 @@
     background-color: aqua;
     display: block;
     background-size: cover;
-    background-image: url("./FileBase/timg.jfif");
+    background-image: url("/downloads/timg.jfif");
     line-height: 1080px;
 }
 
