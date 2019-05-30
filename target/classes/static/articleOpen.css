@@ -49,6 +49,7 @@ img {
     background: #333 linear-gradient(to right, #666, #eeeeee);
     margin: 15px auto 0;
     border-radius: 10px;
+    font-size: 1em;
 }
 
 

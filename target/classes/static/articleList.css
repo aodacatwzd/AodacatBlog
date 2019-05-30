@@ -50,6 +50,13 @@ body {
     display: flex;
     flex-direction: row;
     background-color: skyblue;
+    cursor:pointer;
+}
+
+.article:hover{
+    transition: all 0.5s ease;
+    transform: translate3d(1px,1px,1px);
+    box-shadow: 2px 2px 4px #ffffff;
 }
 
 .imgSmall {
