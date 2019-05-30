@@ -4,7 +4,7 @@ var a;
 window.addEventListener("scroll", function (event) {
     var bar = $("#bottom-bar");
     var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-    if (document.documentElement.scrollHeight <= document.documentElement.clientHeight + scrollTop && flag === 0) {
+    if (document.documentElement.scrollHeight <= document.documentElement.clientHeight + 2 + scrollTop && flag === 0) {
         bar.css("display", "flex");
         bar.css("animation", "showIndex 0.3s");
         flag = 1;
@@ -15,7 +15,6 @@ window.addEventListener("scroll", function (event) {
         }, 150);
         flag = 0;
     }
-
 });
 
 

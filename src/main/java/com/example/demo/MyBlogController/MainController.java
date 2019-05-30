@@ -54,7 +54,7 @@ public class MainController {
         return "index/article";
     }
 
-    @RequestMapping(value = "/article", method = RequestMethod.GET)
+    @RequestMapping(value = "/secretBase", method = RequestMethod.GET)
     public String articlePage(Model model) {
         model.addAttribute("basicService", new BasicService());
         List<BasicService> articleList = basicService.getArticle("select * from article;");
