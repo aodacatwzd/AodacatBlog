@@ -6,7 +6,7 @@
     background-color: #aaaaaa;
     display: block;
     background-size: cover;
-    background-image: url("/downloads/timg.jfif");
+    background-image: url("https://aodacat-1257123428.cos.ap-beijing.myqcloud.com/downloads/timg.jfif");
     line-height: 1080px;
 }
 
@@ -31,7 +31,6 @@
     position: relative;
     left: 0;
     top: 0;
-    background-image: url("./FileBase/test.jpg");
     margin-left: 5%;
     margin-right: 5%;
     min-width: 40%;

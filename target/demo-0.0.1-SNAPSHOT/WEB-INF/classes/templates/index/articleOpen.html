@@ -45,7 +45,7 @@
         <h1 th:text="${article.getName()}">11122324</h1>
     </div>
     <div class="imgContainer">
-        <img th:src="@{'../'+${article.getSrc()}}" alt="" src="#"/>
+        <img th:src="@{${article.getSrc()}}" alt="" src="#"/>
     </div>
     <div class="contextPane">
         <div th:id="S+${articleStat.index}" th:utext="${article.getContext()}">1</div>
