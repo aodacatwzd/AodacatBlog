@@ -3,11 +3,6 @@ body {
     margin: 0 auto;
     user-select: none;
 }
-
-p, h1, h2, h3, h4, h5 {
-    margin: 0;
-}
-
 .imgContainer {
     width: 65%;
     max-height: 750px;
@@ -119,65 +114,6 @@ img {
     flex-direction: column;
 }
 
-.div-top-bar {
-    width: 100%;
-    height: 52px;
-    background-color: #333333;
-    margin: auto;
-    top: 0;
-    position: fixed;
-    z-index: 99;
-}
-
-.div-bottom-bar {
-    width: 100%;
-    height: 100px;
-    background-color: #333333;
-    margin: auto;
-    display: none;
-    position: fixed;
-    bottom: 0;
-}
-
-.p-bottom-left {
-    flex: 1;
-    color: #ffffff;
-    text-align: center;
-    margin-top: 45px;
-}
-
-.p-bottom-right {
-    flex: 1;
-    color: #ffffff;
-    text-align: center;
-    margin-top: 45px;
-}
-
-.p-top-left {
-    color: #ffffff;
-    text-align: center;
-    float: left;
-    padding: 16px 20px 16px 20px;
-    user-select: none;
-}
-
-.p-top-left:hover, .p-top-right:hover {
-    color: #ffffff;
-    cursor: pointer;
-}
-
-.p-top-left:active, .p-top-right:active {
-    box-shadow: 1px 1px 1px #222222;
-    background-color: #111111;
-}
-
-.p-top-right {
-    color: #ffffff;
-    text-align: center;
-    float: right;
-    padding: 16px 20px 16px 20px;
-    user-select: none;
-}
 
 hr{
     width:70%;
@@ -187,22 +123,5 @@ hr{
     background: #333 linear-gradient(to right, #333, #fff);
 }
 
-@keyframes showIndex {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes hideIndex {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
 
 
