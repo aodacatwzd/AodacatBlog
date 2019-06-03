@@ -1,5 +1,6 @@
 package com.example.demo.MyBlogController;
 
+import com.example.demo.Services.AdminService;
 import com.example.demo.Services.BasicService;
 import com.example.demo.Services.CommentService;
 import com.example.demo.Utils.IpUtil;
@@ -11,8 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 
 @Controller
@@ -24,6 +31,7 @@ public class MainController {
 
     private final
     CommentService commentService;
+
 
     public MainController(BasicService basicService, CommentService commentService) {
         this.basicService = basicService;
@@ -54,11 +62,14 @@ public class MainController {
     }
 
     @RequestMapping(value = "/secretBase", method = RequestMethod.GET)
-    public String articlePage(Model model) {
+    public String articlePage(Model model) throws SocketException, UnknownHostException {
+        InetAddress ia = InetAddress.getLocalHost();
+        if ("00-50-56-C0-00-08".equals(basicService.getLocalMac(ia))) {
         model.addAttribute("basicService", new BasicService());
         List<BasicService> articleList = basicService.getArticle("select * from article;");
         model.addAttribute("articleList", articleList);
-        return "index/article";
+            return "index/article";
+        } else return "index/err";
     }
 
     @RequestMapping(value = "/articleList", method = RequestMethod.GET)
@@ -91,6 +102,11 @@ public class MainController {
         commentService.create(commentService1.getUsername(), commentService1.getContent(), id.toString(), commentService1.getIp(), commentService1.getTime());
         Articles(model, id);
         return "index/articleOpen";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String Login() throws SocketException {
+        return "index/login";
     }
 
     @RequestMapping(value = "/surprise", method = RequestMethod.GET)
