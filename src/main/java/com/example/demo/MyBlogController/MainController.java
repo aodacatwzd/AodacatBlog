@@ -62,14 +62,12 @@ public class MainController {
     }
 
     @RequestMapping(value = "/secretBase", method = RequestMethod.GET)
-    public String articlePage(Model model) throws SocketException, UnknownHostException {
+    public String articlePage(Model model) throws UnknownHostException {
         InetAddress ia = InetAddress.getLocalHost();
-        if ("00-50-56-C0-00-08".equals(basicService.getLocalMac(ia))) {
         model.addAttribute("basicService", new BasicService());
         List<BasicService> articleList = basicService.getArticle("select * from article;");
         model.addAttribute("articleList", articleList);
-            return "index/article";
-        } else return "index/err";
+        return "index/article";
     }
 
     @RequestMapping(value = "/articleList", method = RequestMethod.GET)
