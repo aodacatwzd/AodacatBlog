@@ -103,7 +103,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String Login() throws SocketException {
+    public String Login() {
         return "index/login";
     }
 
