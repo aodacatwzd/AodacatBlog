@@ -1,4 +1,3 @@
-/*
 package com.example.demo.MyBlogController;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -18,4 +17,3 @@ public class ErrController implements ErrorController {
         return getErrorPath();
     }
 }
-*/

@@ -14,15 +14,17 @@ public class BlogInterceptor extends HandlerInterceptorAdapter {
     {
         System.out.println("我是拦截器：我证明我进来了");
         HttpSession session=request.getSession();
-        User userInfo = (User)session.getAttribute("userInfo");
-        if(userInfo==null)
+        session.setMaxInactiveInterval(180);
+        System.out.println(session.getId());
+        Object username=session.getAttribute("username");
+        if(username==null)
         {
             System.out.println("我证明用户没有登录");
-            response.sendRedirect(request.getContextPath()+"/login.html");
+            response.sendRedirect("/login");
             return false;
         }
         System.out.println("我证明用户已经登录");
-        return  true;
+        return true;
     }
     /**
      * 生成视图时执行，可以用来处理异常，并记录在日志中

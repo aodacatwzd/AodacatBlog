@@ -1,5 +1,8 @@
 com\example\demo\DemoApplication.class
+com\example\demo\MyBlogController\ErrController.class
+com\example\demo\Services\UserService.class
 com\example\demo\Services\CommentService.class
+com\example\demo\Configurations\InterceptorConfiguration.class
 com\example\demo\Utils\MD5Util.class
 com\example\demo\Interceptor\BlogInterceptor.class
 com\example\demo\Utils\IpUtil.class

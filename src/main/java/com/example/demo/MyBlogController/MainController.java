@@ -3,7 +3,10 @@ package com.example.demo.MyBlogController;
 import com.example.demo.Services.AdminService;
 import com.example.demo.Services.BasicService;
 import com.example.demo.Services.CommentService;
+import com.example.demo.Services.UserService;
 import com.example.demo.Utils.IpUtil;
+import com.example.demo.Utils.MD5Util;
+import com.mysql.cj.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -32,10 +36,14 @@ public class MainController {
     private final
     CommentService commentService;
 
+    private final
+    UserService userService;
 
-    public MainController(BasicService basicService, CommentService commentService) {
+
+    public MainController(BasicService basicService, CommentService commentService, UserService userService) {
         this.basicService = basicService;
         this.commentService = commentService;
+        this.userService = userService;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -62,8 +70,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/secretBase", method = RequestMethod.GET)
-    public String articlePage(Model model) throws UnknownHostException {
-        InetAddress ia = InetAddress.getLocalHost();
+    public String articlePage(Model model) {
         model.addAttribute("basicService", new BasicService());
         List<BasicService> articleList = basicService.getArticle("select * from article;");
         model.addAttribute("articleList", articleList);
@@ -103,8 +110,27 @@ public class MainController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String Login() {
+    public String LoginPage(Model model) {
+        model.addAttribute("userService", new UserService());
         return "index/login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String Login(@ModelAttribute UserService userService1, HttpSession httpSession,Model model) {
+        System.out.println(userService1.getUserName());
+        String sql = "select password from user where username='" + userService1.getUserName() + "';";
+        System.out.println(sql);
+        System.out.println(httpSession.getId());
+        List<UserService> userServiceList = userService.getInfo(sql);
+        if (userServiceList.get(0).getPasswordMD5().equals(MD5Util.md5(userService1.getPasswordMD5()))){
+            System.out.println("yes");
+            httpSession.setAttribute("username",userService1.getUserName());
+            return "redirect:secretBase";
+        }
+        else {
+            System.out.println("gg");
+            return "index/login";
+        }
     }
 
     @RequestMapping(value = "/surprise", method = RequestMethod.GET)
