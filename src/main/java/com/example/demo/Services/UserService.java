@@ -16,14 +16,20 @@ public class UserService {
     private String userName;
     private String passwordMD5;
     private Boolean isAdmin;
+    private String UUID;
 
     public List<UserService> getInfo(String sql) {
         return jdbcTemplate.query(sql, (ResultSet resultSet, int i) -> {
             UserService userService = new UserService();
             userService.setPasswordMD5(resultSet.getString(1));
-            /*userService.setAdmin(resultSet.getBoolean(2));*/
+            userService.setAdmin(resultSet.getBoolean(2));
+            userService.setUUID(resultSet.getString(3));
             return userService;
         });
+    }
+
+    public void updateUUID(String UUID,String userName){
+        jdbcTemplate.update("UPDATE user SET uuid = ? WHERE username = ?",UUID,userName);
     }
 
 
@@ -49,5 +55,13 @@ public class UserService {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getUUID() {
+        return UUID;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
     }
 }

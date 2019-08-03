@@ -9,7 +9,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class InterceptorConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry interceptorRegistry){
-        interceptorRegistry.addInterceptor(new BlogInterceptor()).addPathPatterns("/secretBase");
-
+        interceptorRegistry.addInterceptor(new BlogInterceptor()).addPathPatterns("/secretBase/**");
+        interceptorRegistry.addInterceptor(new BlogInterceptor()).addPathPatterns("/surprise");
+        interceptorRegistry.addInterceptor(new BlogInterceptor()).addPathPatterns("/articleOpen/**");
     }
+
 }

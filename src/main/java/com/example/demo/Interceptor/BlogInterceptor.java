@@ -1,29 +1,42 @@
 package com.example.demo.Interceptor;
 
-import org.apache.catalina.User;
+import com.example.demo.Services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 public class BlogInterceptor extends HandlerInterceptorAdapter {
+    @Autowired
+    private UserService userService;
+
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler)throws Exception
     {
-        System.out.println("我是拦截器：我证明我进来了");
+        //System.out.println("我是拦截器：我证明我进来了");
         HttpSession session=request.getSession();
+        session.setAttribute("url",request.getRequestURL());
         session.setMaxInactiveInterval(180);
-        System.out.println(session.getId());
+        //System.out.println(session.getId());
         Object username=session.getAttribute("username");
+        if(request.getRequestURL().indexOf("articleOpen")!=-1 && request.getMethod().equals("GET")){
+            System.out.println(111);
+            return true;
+        }
         if(username==null)
         {
-            System.out.println("我证明用户没有登录");
+            System.out.println("not login");
             response.sendRedirect("/login");
             return false;
         }
-        System.out.println("我证明用户已经登录");
+        System.out.println("user login");
+        UUID uuid=UUID.randomUUID();
+        userService.setUUID(uuid.toString());
+
         return true;
     }
     /**
@@ -32,7 +45,7 @@ public class BlogInterceptor extends HandlerInterceptorAdapter {
     public void afterCompletion(HttpServletRequest request,
                                 HttpServletResponse response,
                                 Object arg2, Exception exception){
-        //-----------------//
+
     }
 
     /** -
@@ -40,8 +53,7 @@ public class BlogInterceptor extends HandlerInterceptorAdapter {
      */
     public void postHandle(HttpServletRequest request,
                            HttpServletResponse response,
-                           Object arg2, ModelAndView arg3)
-            throws Exception{
-        //----------------------------//
+                           Object arg2, ModelAndView arg3) {
+
     }
 }
