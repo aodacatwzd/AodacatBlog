@@ -11,7 +11,7 @@ public class InterceptorConfiguration extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry interceptorRegistry){
         interceptorRegistry.addInterceptor(new BlogInterceptor()).addPathPatterns("/secretBase/**");
         interceptorRegistry.addInterceptor(new BlogInterceptor()).addPathPatterns("/surprise");
-        interceptorRegistry.addInterceptor(new BlogInterceptor()).addPathPatterns("/articleOpen/**");
+        //interceptorRegistry.addInterceptor(new BlogInterceptor()).addPathPatterns("/articleOpen/**");
     }
 
 }

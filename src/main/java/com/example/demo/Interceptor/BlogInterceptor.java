@@ -2,17 +2,20 @@ package com.example.demo.Interceptor;
 
 import com.example.demo.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 import java.util.UUID;
 
 public class BlogInterceptor extends HandlerInterceptorAdapter {
+
     @Autowired
-    private UserService userService;
+    UserService userService = new UserService();
 
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler)throws Exception
@@ -34,9 +37,6 @@ public class BlogInterceptor extends HandlerInterceptorAdapter {
             return false;
         }
         System.out.println("user login");
-        //UUID uuid=UUID.randomUUID();
-        //userService.setUUID(uuid.toString());
-
         return true;
     }
     /**
@@ -56,4 +56,5 @@ public class BlogInterceptor extends HandlerInterceptorAdapter {
                            Object arg2, ModelAndView arg3) {
 
     }
+
 }

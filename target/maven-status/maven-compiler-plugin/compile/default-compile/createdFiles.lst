@@ -1,10 +1,14 @@
 com\example\demo\DemoApplication.class
+com\example\demo\Utils\SessionUtils.class
+com\example\demo\MyBlogController\ErrController.class
 com\example\demo\Services\UserService.class
 com\example\demo\Services\CommentService.class
 com\example\demo\Configurations\InterceptorConfiguration.class
 com\example\demo\Utils\MD5Util.class
 com\example\demo\Interceptor\BlogInterceptor.class
 com\example\demo\Utils\IpUtil.class
+com\example\demo\Utils\RandomUtils.class
 com\example\demo\Services\BasicService.class
 com\example\demo\MyBlogController\MainController.class
 com\example\demo\Services\AdminService.class
+com\example\demo\Utils\CookieUtils.class

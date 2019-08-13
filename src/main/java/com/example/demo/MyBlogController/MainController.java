@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "/")
@@ -161,6 +162,9 @@ public class MainController {
             if (userServiceList.get(0).getPasswordMD5().equals(MD5Util.md5(userService1.getPasswordMD5()))) {
                 System.out.println("yes");
                 httpSession.setAttribute("username", userService1.getUserName());
+
+                UUID uuid = UUID.randomUUID();
+                userService.updateUUID(uuid.toString(),userService1.getUserName());
                 return "redirect:" + httpSession.getAttribute("url");
             } else {
                 map.put("msg", "账号/密码错误");
