@@ -34,8 +34,8 @@ public class BlogInterceptor extends HandlerInterceptorAdapter {
             return false;
         }
         System.out.println("user login");
-        UUID uuid=UUID.randomUUID();
-        userService.setUUID(uuid.toString());
+        //UUID uuid=UUID.randomUUID();
+        //userService.setUUID(uuid.toString());
 
         return true;
     }

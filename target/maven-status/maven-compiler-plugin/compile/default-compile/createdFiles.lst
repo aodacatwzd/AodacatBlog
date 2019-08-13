@@ -1,5 +1,4 @@
 com\example\demo\DemoApplication.class
-com\example\demo\MyBlogController\ErrController.class
 com\example\demo\Services\UserService.class
 com\example\demo\Services\CommentService.class
 com\example\demo\Configurations\InterceptorConfiguration.class

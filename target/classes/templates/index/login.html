@@ -2,21 +2,28 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{login.css}"/>
+    <link rel="stylesheet" th:href="@{public.css}"/>
+    <link rel="shortcut icon" href="/static/favicon.ico">
 </head>
 <body>
-<div>
-    <form style="margin:0 auto;width: 50%;text-align: center" role="form" action="#" th:object="${userService}"
+<div class="div-input">
+    <form class="div-form-input" role="form" action="#" th:object="${userService}"
           method="post">
-        <label for="name"></label><input class="input" type="text" th:field="*{userName}" id="name"
+        <label for="name"></label><input class="input myInput" type="text" th:field="*{userName}" id="name"
                                          placeholder="username:"
-                                         style="border-top-left-radius: 10px;border-top-right-radius: 10px"/>
-        <button type="submit" class="btn btn-block myBTN" id="btn">
-            Comment
-        </button>
-        <label for="content"></label><input class="input" th:field="*{passwordMD5}" id="content" placeholder="context:"
-                                            style="border-bottom-left-radius: 10px;border-bottom-right-radius: 10px"/>
+    />
 
+        <label for="content"></label><input type="password" class="input myInput" th:field="*{passwordMD5}" id="content"
+                                            placeholder="password:"
+    />
+        <p style="color: red" id="password-warning" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+        <button type="submit" class="btn btn-block myBTN" id="btn">
+            login
+        </button>
     </form>
 </div>
 </body>

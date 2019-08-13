@@ -22,8 +22,6 @@ public class UserService {
         return jdbcTemplate.query(sql, (ResultSet resultSet, int i) -> {
             UserService userService = new UserService();
             userService.setPasswordMD5(resultSet.getString(1));
-            userService.setAdmin(resultSet.getBoolean(2));
-            userService.setUUID(resultSet.getString(3));
             return userService;
         });
     }
