@@ -11,6 +11,15 @@
     <link rel="stylesheet" th:href="@{../articleOpen.css}">
     <link rel="stylesheet" th:href="@{../public.css}"/>
     <link rel="stylesheet" th:href="@{../prism.css}">
+    <script>
+        function randomHead() {
+            var a = Math.floor(Math.random()*10)+1;
+            console.log("rua:"+a);
+            var imgSrc = "https://aodacat-1257123428.cos.ap-beijing.myqcloud.com/downloads/"+a+".jpg";
+            console.log(imgSrc);
+            this.attr("src",imgSrc);
+        }
+    </script>
 </head>
 <body>
 <div class="div-top-bar">
@@ -54,7 +63,7 @@
 
 <div class="comment-pane" th:each="comment:${commentList}">
     <div class="comment-head-img">
-        <img class="headIMG" src="https://aodacat-1257123428.cos.ap-beijing.myqcloud.com/downloads/7.jpg" alt="img"/>
+        <img class="headIMG" src="https://aodacat-1257123428.cos.ap-beijing.myqcloud.com/downloads/7.jpg" alt="img" onload="randomHead()"/>
     </div>
     <div class="comment">
         <h4 style="margin-bottom: 10px;margin-top: 0;" th:text="${comment.getUsername()}+' from '+${comment.getIp()}">
