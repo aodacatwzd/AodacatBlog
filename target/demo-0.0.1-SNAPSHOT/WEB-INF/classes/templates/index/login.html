@@ -9,8 +9,10 @@
     <link rel="stylesheet" th:href="@{public.css}"/>
     <link rel="shortcut icon" href="/static/favicon.ico">
 </head>
-<body style="background-image: url('https://aodacat-1257123428.cos.ap-beijing.myqcloud.com/downloads/timg.png')">
+<body style="background-image: url('https://aodacat-1257123428.cos.ap-beijing.myqcloud.com/downloads/timg.png');    background-repeat: no-repeat;
+    background-size: cover;">
 <div class="div-input">
+    <p class="header-text">用户登录</p>
     <form class="div-form-input" role="form" action="#" th:object="${userService}"
           method="post">
         <label for="name"></label><input class="input myInput" type="text" th:field="*{userName}" id="name"
