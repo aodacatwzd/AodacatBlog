@@ -13,11 +13,11 @@
     <link rel="stylesheet" th:href="@{../prism.css}">
     <script>
         function randomHead() {
-            var a = Math.floor(Math.random()*10)+1;
+            var a = Math.floor(Math.random()*7)+1;
             console.log("rua:"+a);
             var imgSrc = "https://aodacat-1257123428.cos.ap-beijing.myqcloud.com/downloads/"+a+".jpg";
             console.log(imgSrc);
-            this.attr("src",imgSrc);
+            $(this).attr("src",imgSrc);
         }
     </script>
 </head>
